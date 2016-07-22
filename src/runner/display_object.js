@@ -625,6 +625,32 @@ define([
     },
 
     /**
+     * Add a custom attribute to the objects attribute list. If attribute already exists it will not change any data.
+     *
+     * @param {String} name  The name of the attribute
+     * @param {Object} value The value of the attribute
+     */
+    addAttr: function(name, value) {
+      if (name == null) {
+        throw Error('Please specify the name of the attribute');
+      }
+
+      if ( ! this.hasAttr(name)) {
+        this._attributes.name = value;
+      }
+    },
+
+    /**
+     * Checks to see if the object has the given attribute
+     *
+     * @param  {String} name The name off the attribute
+     * @return {Boolean} True if it contains the attribute, False otherwise
+     */
+    hasAttr: function(name) {
+      return this._attributes.hasOwnProperty(name);
+    },
+
+    /**
      * Gets the matrix of the DisplayObject combined with all ancestor matrices
      *
      * @returns {Matrix} The resulting matrix
